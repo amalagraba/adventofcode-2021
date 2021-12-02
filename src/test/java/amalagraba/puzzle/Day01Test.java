@@ -10,7 +10,7 @@ public class Day01Test {
     private final Day01 puzzle = new Day01();
 
     @Test
-    public void input_file_name_must_be_day01puzzle1_txt() {
+    public void input_file_name_must_be_day01_txt() {
         assertEquals("day01.txt", puzzle.inputFileName());
     }
 
