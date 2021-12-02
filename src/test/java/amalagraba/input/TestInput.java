@@ -7,4 +7,8 @@ public class TestInput {
     public static String integerInput(Integer... input) {
         return StringUtils.joinWith("\n", (Object[]) input);
     }
+
+    public static String stringInput(String... input) {
+        return StringUtils.joinWith("\n", (Object[]) input);
+    }
 }
