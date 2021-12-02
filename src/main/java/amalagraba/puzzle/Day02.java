@@ -11,6 +11,7 @@ import lombok.RequiredArgsConstructor;
 import java.awt.Point;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 public class Day02 extends AbstractPuzzle {
 
@@ -25,11 +26,7 @@ public class Day02 extends AbstractPuzzle {
      */
     @Override
     public String solvePart1(String rawInput) {
-        Location location = new Location();
-
-        executeCommands(parseCommands(rawInput), location);
-
-        return String.valueOf(location.getCoordinateProduct());
+        return solve(rawInput, commandFactory::createCommand);
     }
 
     /**
@@ -37,7 +34,15 @@ public class Day02 extends AbstractPuzzle {
      */
     @Override
     public String solvePart2(String rawInput) {
-        return "0";
+        return solve(rawInput, commandFactory::createAimedCommand);
+    }
+
+    public String solve(String rawInput, Function<String, Command> commandParser) {
+        Location location = new Location();
+
+        executeCommands(parseCommands(rawInput, commandParser), location);
+
+        return String.valueOf(location.getCoordinateProduct());
     }
 
     private void executeCommands(Command[] commands, Location location) {
@@ -46,9 +51,7 @@ public class Day02 extends AbstractPuzzle {
         }
     }
 
-    private Command[] parseCommands(String rawInput) {
-        return Arrays.stream(splitInputLines(rawInput))
-                .map(commandFactory::createCommand)
-                .toArray(Command[]::new);
+    private Command[] parseCommands(String rawInput, Function<String, Command> commandParser) {
+        return Arrays.stream(splitInputLines(rawInput)).map(commandParser).toArray(Command[]::new);
     }
 }

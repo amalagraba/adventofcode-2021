@@ -1,13 +1,7 @@
 package amalagraba.model.day02;
 
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+@FunctionalInterface
+public interface Command {
 
-@Getter
-@RequiredArgsConstructor
-public abstract class Command {
-
-    protected final int amount;
-
-    public abstract void execute(Location location);
+    void execute(Location location);
 }
