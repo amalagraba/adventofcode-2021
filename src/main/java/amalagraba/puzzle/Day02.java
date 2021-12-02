@@ -5,12 +5,8 @@ import amalagraba.model.AbstractPuzzle;
 import amalagraba.model.day02.Command;
 import amalagraba.model.day02.CommandFactory;
 import amalagraba.model.day02.Location;
-import lombok.Data;
-import lombok.RequiredArgsConstructor;
 
-import java.awt.Point;
 import java.util.Arrays;
-import java.util.List;
 import java.util.function.Function;
 
 public class Day02 extends AbstractPuzzle {
@@ -47,7 +43,7 @@ public class Day02 extends AbstractPuzzle {
 
     private void executeCommands(Command[] commands, Location location) {
         for (Command command : commands) {
-            command.execute(location);
+            command.executeOn(location);
         }
     }
 

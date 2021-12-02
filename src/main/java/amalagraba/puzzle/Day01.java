@@ -3,6 +3,8 @@ package amalagraba.puzzle;
 import amalagraba.PuzzleRunner;
 import amalagraba.model.AbstractPuzzle;
 
+import java.util.function.Function;
+
 public class Day01 extends AbstractPuzzle {
 
     public static void main(String[] args) {
@@ -14,7 +16,7 @@ public class Day01 extends AbstractPuzzle {
      */
     @Override
     public String solvePart1(String rawInput) {
-        return String.valueOf(countIncreases(parseInputToIntArray(rawInput)));
+        return solve(rawInput, this::parseInputToIntArray);
     }
 
     /**
@@ -22,7 +24,11 @@ public class Day01 extends AbstractPuzzle {
      */
     @Override
     public String solvePart2(String rawInput) {
-        return String.valueOf(countIncreases(mapToMeasurementWindows(parseInputToIntArray(rawInput))));
+        return solve(rawInput, this::parseInputToMeasurementWindows);
+    }
+
+    private String solve(String rawInput, Function<String, Integer[]> inputMapper) {
+        return String.valueOf(countIncreases(inputMapper.apply(rawInput)));
     }
 
     private Integer countIncreases(Integer[] input) {
@@ -36,7 +42,11 @@ public class Day01 extends AbstractPuzzle {
         return count;
     }
 
-    private Integer[] mapToMeasurementWindows(Integer[] input) {
+    private Integer[] parseInputToMeasurementWindows(String rawInput) {
+        return mapInputToMeasurementWindows(parseInputToIntArray(rawInput));
+    }
+
+    private Integer[] mapInputToMeasurementWindows(Integer[] input) {
         Integer[] windows = new Integer[Math.max(0, input.length - 2)];
 
         for (int i = 2; i < input.length; i++) {
