@@ -15,7 +15,7 @@ public class InputReaderTest {
 
     @Test
     public void given_a_valid_filename_retrieves_its_content() {
-        String expected = "some\r\nrandom\r\ntext";
+        String expected = "some random text";
 
         String text = inputReader.read("file.txt");
 
