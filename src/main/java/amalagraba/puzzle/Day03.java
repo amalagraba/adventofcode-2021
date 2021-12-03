@@ -2,6 +2,8 @@ package amalagraba.puzzle;
 
 import amalagraba.PuzzleRunner;
 import amalagraba.model.AbstractPuzzle;
+import amalagraba.model.day03.BitReadingCalculator;
+import amalagraba.model.day03.LifeSupportRatingCalculator;
 import amalagraba.model.day03.PowerConsumptionCalculator;
 
 import java.util.Arrays;
@@ -17,7 +19,7 @@ public class Day03 extends AbstractPuzzle {
      */
     @Override
     public String solvePart1(String rawInput) {
-        return solve(rawInput);
+        return solve(rawInput, new PowerConsumptionCalculator());
     }
 
     /**
@@ -25,14 +27,12 @@ public class Day03 extends AbstractPuzzle {
      */
     @Override
     public String solvePart2(String rawInput) {
-        return "0";
+        return solve(rawInput, new LifeSupportRatingCalculator());
     }
 
-    private String solve(String rawInput) {
-        PowerConsumptionCalculator calculator = new PowerConsumptionCalculator();
-
+    private String solve(String rawInput, BitReadingCalculator calculator) {
         Arrays.stream(splitInputLines(rawInput)).forEach(calculator::addReading);
 
-        return String.valueOf(calculator.calculatePowerConsumption());
+        return String.valueOf(calculator.calculate());
     }
 }
