@@ -15,3 +15,9 @@ Your instincts tell you that in order to save Christmas, you'll need to get all 
 Collect stars by solving puzzles. Two puzzles will be made available on each day in the Advent calendar; the second puzzle is unlocked when you complete the first. Each puzzle grants one star. Good luck!
 
 Find more at [https://adventofcode.com/](https://adventofcode.com/)
+
+## Solutions
+
+* Day 1 - ⭐️⭐️ - [Sonar Sweep](https://github.com/amalagraba/adventofcode-2021/blob/master/src/main/java/amalagraba/puzzle/day01/Day01.java)
+* Day 2 - ⭐️⭐️ - [Dive!](https://github.com/amalagraba/adventofcode-2021/blob/master/src/main/java/amalagraba/puzzle/day02/Day02.java)
+* Day 3 - ⭐️⭐️ - [Binary Diagnostic](https://github.com/amalagraba/adventofcode-2021/blob/master/src/main/java/amalagraba/puzzle/day03/Day03.java)
