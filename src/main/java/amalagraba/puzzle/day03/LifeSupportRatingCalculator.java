@@ -4,7 +4,8 @@ import java.util.function.BiFunction;
 
 public class LifeSupportRatingCalculator extends BitReadingCalculator {
 
-    public int calculate(BitReader reader) {
+    @Override
+    protected int calculate(BitReader reader) {
         return readOxygenGeneratorRating(reader) * readCO2ScrubberRating(reader);
     }
 

@@ -3,7 +3,7 @@ package amalagraba.puzzle.day03;
 public class PowerConsumptionCalculator extends BitReadingCalculator {
 
     @Override
-    public int calculate(BitReader reader) {
+    protected int calculate(BitReader reader) {
         return readGammaRate(reader) * readEpsilonRate(reader);
     }
 
