@@ -1,5 +1,9 @@
 # Advent of code 2021
-This is a series of challenges to be completed every day until December 25th. 
+
+[![Build Status](https://github.com/amalagraba/adventofcode-2021/actions/workflows/maven.yml/badge.svg)](https://github.com/amalagraba/adventofcode-2021/actions)
+[![Code Coverage](https://img.shields.io/codecov/c/github/amalagraba/adventofcode-2021.svg)](https://codecov.io/gh/amalagraba/adventofcode-2021)
+
+My solutions for the advent of code 2021 event.
 
 ## Introduction
 You're minding your own business on a ship at sea when the overboard alarm goes off! You rush to see if you can help. Apparently, one of the Elves tripped and accidentally sent the sleigh keys flying into the ocean!
