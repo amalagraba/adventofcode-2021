@@ -1,10 +1,7 @@
-package amalagraba.puzzle;
+package amalagraba.puzzle.day03;
 
 import amalagraba.PuzzleRunner;
-import amalagraba.model.AbstractPuzzle;
-import amalagraba.model.day03.BitReadingCalculator;
-import amalagraba.model.day03.LifeSupportRatingCalculator;
-import amalagraba.model.day03.PowerConsumptionCalculator;
+import amalagraba.puzzle.AbstractPuzzle;
 
 import java.util.Arrays;
 

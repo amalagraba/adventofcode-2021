@@ -1,7 +1,7 @@
 package amalagraba;
 
 import amalagraba.input.InputReader;
-import amalagraba.model.Puzzle;
+import amalagraba.puzzle.Puzzle;
 
 public class PuzzleRunner {
 

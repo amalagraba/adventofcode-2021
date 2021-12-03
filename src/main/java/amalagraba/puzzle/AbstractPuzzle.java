@@ -1,4 +1,4 @@
-package amalagraba.model;
+package amalagraba.puzzle;
 
 import org.apache.commons.lang3.StringUtils;
 

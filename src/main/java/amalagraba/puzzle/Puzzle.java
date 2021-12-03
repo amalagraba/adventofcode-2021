@@ -1,4 +1,4 @@
-package amalagraba.model;
+package amalagraba.puzzle;
 
 public interface Puzzle {
 

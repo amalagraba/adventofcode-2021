@@ -1,4 +1,4 @@
-package amalagraba.puzzle;
+package amalagraba.puzzle.day02;
 
 import org.junit.Test;
 
@@ -21,6 +21,11 @@ public class Day02Test {
         String result = puzzle.solvePart1(input);
 
         assertEquals("0", result);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void when_input_is_invalid_solvePart1_throws_exception() {
+        puzzle.solvePart1("something 3");
     }
 
     @Test
@@ -57,6 +62,11 @@ public class Day02Test {
         String result = puzzle.solvePart2(input);
 
         assertEquals("0", result);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void when_input_is_invalid_solvePart2_throws_exception() {
+        puzzle.solvePart2("something 3");
     }
 
     @Test

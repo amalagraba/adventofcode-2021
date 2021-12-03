@@ -1,4 +1,4 @@
-package amalagraba.puzzle;
+package amalagraba.puzzle.day01;
 
 import org.junit.Test;
 
