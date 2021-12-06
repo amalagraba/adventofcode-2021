@@ -6,8 +6,6 @@ import amalagraba.puzzle.AbstractPuzzle;
 import java.util.Arrays;
 import java.util.function.Predicate;
 
-import static java.util.function.Predicate.not;
-
 public class Day05 extends AbstractPuzzle {
 
     public static void main(String[] args) {
@@ -19,7 +17,7 @@ public class Day05 extends AbstractPuzzle {
      */
     @Override
     public String solvePart1(String rawInput) {
-        return solve(rawInput, not(VentLine::isDiagonal));
+        return solve(rawInput, Line::isHorizontalOrVertical);
     }
 
     /**
@@ -30,10 +28,10 @@ public class Day05 extends AbstractPuzzle {
         return solve(rawInput, line -> true);
     }
 
-    private String solve(String rawInput, Predicate<VentLine> filter) {
+    private String solve(String rawInput, Predicate<Line> filter) {
         HydrothermalVentField field = new HydrothermalVentField();
 
-        Arrays.stream(splitInputLines(rawInput)).map(VentLine::new).filter(filter).forEach(field::add);
+        Arrays.stream(splitInputLines(rawInput)).map(Line::new).filter(filter).forEach(field::add);
 
         return String.valueOf(field.countPointsWithMultipleVents());
     }
