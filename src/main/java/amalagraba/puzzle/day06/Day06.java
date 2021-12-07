@@ -10,7 +10,7 @@ public class Day06 extends AbstractPuzzle {
     }
 
     /**
-     * Definition: https://adventofcode.com/2021/day/5
+     * Definition: https://adventofcode.com/2021/day/6
      */
     @Override
     public String solvePart1(String rawInput) {
@@ -18,7 +18,7 @@ public class Day06 extends AbstractPuzzle {
     }
 
     /**
-     * Definition: https://adventofcode.com/2021/day/5#part2
+     * Definition: https://adventofcode.com/2021/day/6#part2
      */
     @Override
     public String solvePart2(String rawInput) {
@@ -26,7 +26,9 @@ public class Day06 extends AbstractPuzzle {
     }
 
     private String solve(String rawInput, int days) {
-        LanternfishPopulationSimulator populationSimulator = new LanternfishPopulationSimulator(rawInput);
+        Integer[] initialState = splitCommaSeparatedIntegers(rawInput);
+        LanternfishPopulationSimulator populationSimulator = new LanternfishPopulationSimulator(initialState);
+
         populationSimulator.simulateDays(days);
 
         return String.valueOf(populationSimulator.count());

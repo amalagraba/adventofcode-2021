@@ -1,7 +1,6 @@
 package amalagraba.puzzle.day06;
 
 import org.apache.commons.lang3.ArrayUtils;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.Arrays;
 import java.util.stream.IntStream;
@@ -14,12 +13,8 @@ public class LanternfishPopulationSimulator {
     private final long[] populationBySpawnTimer = new long[INITIAL_SPAWN_TIMER + 1];
 
 
-    public LanternfishPopulationSimulator(String initialState) {
-        if (StringUtils.isNotBlank(initialState)) {
-            Arrays.stream(initialState.split(","))
-                    .map(Short::parseShort)
-                    .forEach(timer -> populationBySpawnTimer[timer]++);
-        }
+    public LanternfishPopulationSimulator(Integer[] initialState) {
+        Arrays.stream(initialState).forEach(timer -> populationBySpawnTimer[timer]++);
     }
 
     public void simulateDays(int days) {

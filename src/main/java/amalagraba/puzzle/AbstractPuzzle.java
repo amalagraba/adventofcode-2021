@@ -16,4 +16,11 @@ public abstract class AbstractPuzzle implements Puzzle {
         }
         return input.trim().split("\\r?\\n");
     }
+
+    protected Integer[] splitCommaSeparatedIntegers(String input) {
+        if (StringUtils.isNotBlank(input)) {
+            return Arrays.stream(input.split(",")).map(Integer::parseInt).toArray(Integer[]::new);
+        }
+        return new Integer[0];
+    }
 }
