@@ -3,6 +3,8 @@ package amalagraba.puzzle.day07;
 import amalagraba.PuzzleRunner;
 import amalagraba.puzzle.AbstractPuzzle;
 
+import java.util.function.Function;
+
 public class Day07 extends AbstractPuzzle {
 
     public static void main(String[] args) {
@@ -25,7 +27,7 @@ public class Day07 extends AbstractPuzzle {
         return solve(rawInput, steps -> steps * (steps + 1) / 2);
     }
 
-    private String solve(String rawInput, FuelUsageCalculator fuelUsageCalculator) {
+    private String solve(String rawInput, Function<Integer, Integer> fuelUsageCalculator) {
         Integer[] initialPositions = splitCommaSeparatedIntegers(rawInput);
 
         return String.valueOf(new MinimumFuelUsagePredictor(initialPositions, fuelUsageCalculator).predict());

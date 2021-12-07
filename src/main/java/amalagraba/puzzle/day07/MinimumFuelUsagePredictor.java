@@ -5,7 +5,7 @@ import java.util.OptionalInt;
 import java.util.function.Function;
 import java.util.stream.IntStream;
 
-public record MinimumFuelUsagePredictor(Integer[] positions, FuelUsageCalculator fuelUsageCalculator) {
+public record MinimumFuelUsagePredictor(Integer[] positions, Function<Integer, Integer> fuelUsageCalculator) {
 
     public int predict() {
         int max = findPosition(IntStream::max);
@@ -17,7 +17,7 @@ public record MinimumFuelUsagePredictor(Integer[] positions, FuelUsageCalculator
     private int calculateFuelToPosition(int position) {
         return Arrays.stream(positions)
                 .map(value -> Math.abs(value - position))
-                .mapToInt(fuelUsageCalculator::calculate)
+                .mapToInt(fuelUsageCalculator::apply)
                 .sum();
     }
 
