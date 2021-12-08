@@ -1,6 +1,5 @@
 package amalagraba.puzzle.day08;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Predicate;
@@ -11,26 +10,22 @@ import static java.util.function.Predicate.not;
 public class DisplayOutputDecoder {
 
     public int decode(String value) {
-        String[] inputOutput = splitInputOutput(value);
+        DisplaySignalObservation observation = new DisplaySignalObservation(value);
+        Map<DisplaySignal, Integer> signalMap = buildSignalMap(observation.getInput());
 
-        return decode(inputOutput[1], buildSignalMap(inputOutput[0]));
-    }
-
-    public int countUniqueLengthOutputValues(String value) {
-        return (int) readSignals(splitInputOutput(value)[1]).stream()
-                .filter(DisplaySignal::hasUniqueLength)
-                .count();
-    }
-
-    private int decode(String output, Map<DisplaySignal, Integer> signalMap) {
-        return Integer.parseInt(readSignals(output).stream()
+        return Integer.parseInt(observation.getOutput().stream()
                 .map(signalMap::get)
                 .map(String::valueOf)
                 .collect(Collectors.joining()));
     }
 
-    private Map<DisplaySignal, Integer> buildSignalMap(String input) {
-        List<DisplaySignal> signals = readSignals(input);
+    public int countUniqueLengthOutputValues(String value) {
+        return (int) new DisplaySignalObservation(value).getOutput().stream()
+                .filter(DisplaySignal::hasUniqueLength)
+                .count();
+    }
+
+    private Map<DisplaySignal, Integer> buildSignalMap(List<DisplaySignal> signals) {
         DisplaySignal seven = decodeSeven(signals);
         DisplaySignal three = decodeThree(signals, seven);
         DisplaySignal nine = decodeNine(signals, three);
@@ -95,15 +90,5 @@ public class DisplayOutputDecoder {
 
     private List<DisplaySignal> filterBySize(List<DisplaySignal> signals, int size) {
         return signals.stream().filter(signal -> signal.size() == size).collect(Collectors.toList());
-    }
-
-    private List<DisplaySignal> readSignals(String value) {
-        return Arrays.stream(value.trim().split(" "))
-                .map(DisplaySignal::new)
-                .collect(Collectors.toList());
-    }
-
-    private String[] splitInputOutput(String value) {
-        return value.split("\\|");
     }
 }
