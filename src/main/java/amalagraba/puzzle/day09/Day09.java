@@ -13,7 +13,7 @@ public class Day09 extends AbstractPuzzle {
     }
 
     /**
-     * Definition: https://adventofcode.com/2021/day/8
+     * Definition: https://adventofcode.com/2021/day/9
      */
     @Override
     public String solvePart1(String rawInput) {
@@ -23,7 +23,7 @@ public class Day09 extends AbstractPuzzle {
     }
 
     /**
-     * Definition: https://adventofcode.com/2021/day/8#part2
+     * Definition: https://adventofcode.com/2021/day/9#part2
      */
     @Override
     public String solvePart2(String rawInput) {
