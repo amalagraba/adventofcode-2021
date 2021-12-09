@@ -43,6 +43,15 @@ public class Day08Test {
     }
 
     @Test
+    public void when_input_is_empty_solvePart2_result_is_0() {
+        String input = "";
+
+        String result = puzzle.solvePart2(input);
+
+        assertEquals("0", result);
+    }
+
+    @Test
     public void when_input_sums_61229_in_output_values_solvePart2_result_is_61229() {
         String input = """
                 be cfbegad cbdgef fgaecd cgeb fdcge agebfd fecdb fabcd edb | fdgacbe cefdb cefbgd gcbe

@@ -42,6 +42,15 @@ public class Day05Test {
     }
 
     @Test
+    public void when_input_is_empty_solvePart2_result_is_0() {
+        String input = "";
+
+        String result = puzzle.solvePart2(input);
+
+        assertEquals("0", result);
+    }
+
+    @Test
     public void part2_must_take_diagonals_into_account() {
         String input = stringInput("1,4 -> 1,10", "1,5 -> 1,7", "0,3 -> 4,7");
 

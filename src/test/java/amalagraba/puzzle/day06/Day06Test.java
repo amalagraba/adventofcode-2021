@@ -32,6 +32,15 @@ public class Day06Test {
     }
 
     @Test
+    public void when_input_is_empty_solvePart2_result_is_0() {
+        String input = "";
+
+        String result = puzzle.solvePart2(input);
+
+        assertEquals("0", result);
+    }
+
+    @Test
     public void when_input_is_3_4_3_1_2_solvePart2_returns_26984457539() {
         String input = "3,4,3,1,2";
 
