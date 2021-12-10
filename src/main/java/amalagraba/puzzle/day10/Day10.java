@@ -14,7 +14,7 @@ public class Day10 extends AbstractPuzzle {
      */
     @Override
     public String solvePart1(String rawInput) {
-        return solve(rawInput, new InvalidSyntaxScoreCalculator());
+        return solve(rawInput, new InvalidSyntaxAnalyzer());
     }
 
     /**
@@ -22,10 +22,10 @@ public class Day10 extends AbstractPuzzle {
      */
     @Override
     public String solvePart2(String rawInput) {
-        return solve(rawInput, new IncompleteLineScoreCalculator());
+        return solve(rawInput, new IncompleteLineAnalyzer());
     }
 
-    private String solve(String rawInput, SyntaxScoreCalculator calculator) {
-        return String.valueOf(calculator.calculate(splitInputLines(rawInput)));
+    private String solve(String rawInput, SyntaxAnalyzer analyzer) {
+        return String.valueOf(analyzer.calculateScore(splitInputLines(rawInput)));
     }
 }

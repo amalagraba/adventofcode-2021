@@ -7,9 +7,7 @@ import java.util.Map;
 import java.util.Stack;
 import java.util.stream.Collectors;
 
-import static java.util.function.Predicate.not;
-
-public class IncompleteLineScoreCalculator extends SyntaxScoreCalculator {
+public class IncompleteLineAnalyzer extends SyntaxAnalyzer {
 
     private static final int SCORE_MULTIPLIER = 5;
     private static final Map<Character, Integer> SCORE_MAP = Map.of(
@@ -20,26 +18,23 @@ public class IncompleteLineScoreCalculator extends SyntaxScoreCalculator {
     );
 
     @Override
-    public long calculate(String[] lines) {
+    public long calculateScore(String[] lines) {
         List<Long> sortedScores = Arrays.stream(lines)
-                .map(this::buildIncompleteStack)
-                .filter(not(this::isInvalid))
-                .map(this::calculateStackScore)
+                .map(this::analyze)
+                .filter(SyntaxAnalysisResult::isIncompleteLine)
+                .map(SyntaxAnalysisResult::unmatchedCharacters)
+                .map(this::calculateScore)
                 .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
 
         return sortedScores.isEmpty() ? 0 : sortedScores.get(sortedScores.size() / 2);
     }
 
-    private boolean isInvalid(Stack<Character> stack) {
-        return isCloseSymbol(stack.peek());
-    }
-
-    private long calculateStackScore(Stack<Character> characters) {
+    private long calculateScore(Stack<Character> unmatchedCharacters) {
         long score = 0;
 
-        while (!characters.isEmpty()) {
-            score = score * SCORE_MULTIPLIER + SCORE_MAP.get(characters.pop());
+        while (!unmatchedCharacters.isEmpty()) {
+            score = score * SCORE_MULTIPLIER + SCORE_MAP.get(unmatchedCharacters.pop());
         }
         return score;
     }
