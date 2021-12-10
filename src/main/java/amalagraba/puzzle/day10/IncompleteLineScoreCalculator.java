@@ -13,10 +13,10 @@ public class IncompleteLineScoreCalculator extends SyntaxScoreCalculator {
 
     private static final int SCORE_MULTIPLIER = 5;
     private static final Map<Character, Integer> SCORE_MAP = Map.of(
-            ')', 1,
-            ']', 2,
-            '}', 3,
-            '>', 4
+            '(', 1,
+            '[', 2,
+            '{', 3,
+            '<', 4
     );
 
     @Override
@@ -39,7 +39,7 @@ public class IncompleteLineScoreCalculator extends SyntaxScoreCalculator {
         long score = 0;
 
         while (!characters.isEmpty()) {
-            score = score * SCORE_MULTIPLIER + SCORE_MAP.get(getCloseSymbol(characters.pop()));
+            score = score * SCORE_MULTIPLIER + SCORE_MAP.get(characters.pop());
         }
         return score;
     }

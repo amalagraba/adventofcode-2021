@@ -40,12 +40,4 @@ public abstract class SyntaxScoreCalculator {
     protected boolean isCloseSymbol(Character symbol) {
         return OPEN_CLOSE_MAP.containsKey(symbol);
     }
-
-    protected Character getCloseSymbol(Character symbol) {
-        return OPEN_CLOSE_MAP.entrySet().stream()
-                .filter(entry -> entry.getValue().equals(symbol))
-                .findFirst()
-                .map(Map.Entry::getKey)
-                .orElse(symbol);
-    }
 }
