@@ -4,6 +4,8 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Getter
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
@@ -22,5 +24,13 @@ public class IntPoint extends Point {
 
     public void increaseValue() {
         value++;
+    }
+
+    public boolean isHigherThan(IntPoint point) {
+        return value > point.getValue();
+    }
+
+    public boolean isLowerThanAll(List<? extends IntPoint> points) {
+        return points.stream().allMatch(point -> point.isHigherThan(this));
     }
 }
