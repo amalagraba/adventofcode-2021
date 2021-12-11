@@ -1,6 +1,7 @@
 package amalagraba.puzzle.day05;
 
 import amalagraba.PuzzleRunner;
+import amalagraba.common.Line;
 import amalagraba.puzzle.AbstractPuzzle;
 
 import java.util.Arrays;
@@ -29,9 +30,9 @@ public class Day05 extends AbstractPuzzle {
     }
 
     private String solve(String rawInput, Predicate<Line> filter) {
-        HydrothermalVentField field = new HydrothermalVentField();
+        HydrothermalVentField field = new HydrothermalVentField(filter);
 
-        Arrays.stream(splitInputLines(rawInput)).map(Line::new).filter(filter).forEach(field::add);
+        Arrays.stream(splitInputLines(rawInput)).forEach(field::addLine);
 
         return String.valueOf(field.countPointsWithMultipleVents());
     }

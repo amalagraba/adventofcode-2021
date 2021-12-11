@@ -1,19 +1,18 @@
-package amalagraba.puzzle.day05;
+package amalagraba.common;
 
 import com.google.common.collect.AbstractIterator;
+import lombok.RequiredArgsConstructor;
 
+import java.util.AbstractCollection;
+import java.util.Collection;
 import java.util.Iterator;
 
-public class Line implements Iterable<Point> {
+@RequiredArgsConstructor
+public class Line extends AbstractCollection<Point> implements Collection<Point> {
 
     private final Point from;
     private final Point to;
 
-    public Line(String line) {
-        String[] points = line.split(" -> ");
-        this.from = new Point(points[0]);
-        this.to = new Point(points[1]);
-    }
 
     public boolean isHorizontalOrVertical() {
         return from.getX() == to.getX() || from.getY() == to.getY();
@@ -23,8 +22,8 @@ public class Line implements Iterable<Point> {
     public Iterator<Point> iterator() {
         return new AbstractIterator<>() {
             private final Point increment = new Point(
-                    (long) Math.signum(to.getX() - from.getX()),
-                    (long) Math.signum(to.getY() - from.getY()));
+                    (int) Math.signum(to.getX() - from.getX()),
+                    (int) Math.signum(to.getY() - from.getY()));
 
             private Point last;
 
@@ -41,5 +40,17 @@ public class Line implements Iterable<Point> {
                 return last;
             }
         };
+    }
+
+    @Override
+    public int size() {
+        if (isHorizontalOrVertical()) {
+            return Math.abs(from.getX() - to.getX()) + Math.abs(from.getY() - to.getY()) + 1;
+        }
+        return greatestCommonDivisor(Math.abs(from.getX() - to.getX()), Math.abs(from.getY() - to.getY())) + 1;
+    }
+
+    private int greatestCommonDivisor(int a, int b) {
+        return b == 0 ? a : greatestCommonDivisor(b, a%b);
     }
 }
