@@ -1,12 +1,10 @@
 package amalagraba.puzzle.day11;
 
 import amalagraba.common.IntPoint;
-import lombok.EqualsAndHashCode;
 
 import java.util.List;
 import java.util.function.Supplier;
 
-@EqualsAndHashCode(callSuper = true)
 public class Octopus extends IntPoint {
 
     private static final int FLASH_THRESHOLD = 9;

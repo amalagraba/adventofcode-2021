@@ -2,8 +2,10 @@ package amalagraba.puzzle.day11;
 
 import amalagraba.common.Grid;
 
-import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -36,14 +38,14 @@ public class OctopusFlashObserver {
     private int observe() {
         octopusGrid.forEach(Octopus::increaseValue);
 
-        List<Octopus> flashed = flash();
+        Collection<Octopus> flashed = flash();
         flashed.forEach(Octopus::reset);
 
         return flashed.size();
     }
 
-    private List<Octopus> flash() {
-        List<Octopus> allFlashed = new ArrayList<>();
+    private Collection<Octopus> flash() {
+        Set<Octopus> allFlashed = new HashSet<>();
         List<Octopus> flashed;
 
         do {

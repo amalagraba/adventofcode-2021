@@ -1,6 +1,5 @@
 package amalagraba.common;
 
-import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -8,7 +7,6 @@ import java.util.List;
 
 @Getter
 @ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
 public class IntPoint extends Point {
 
     protected int value;
