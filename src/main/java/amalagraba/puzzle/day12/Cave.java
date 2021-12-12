@@ -33,8 +33,12 @@ public class Cave {
         return !isLarge();
     }
 
-    public boolean isNotStartOrEnd() {
-        return !END.equals(name) && !START.equals(name);
+    public boolean isEnd() {
+        return END.equals(name);
+    }
+
+    public boolean isStart() {
+        return START.equals(name);
     }
 
     public void visit(Visitor visitor) {

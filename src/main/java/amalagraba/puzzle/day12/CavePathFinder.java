@@ -7,8 +7,6 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 
-import static amalagraba.puzzle.day12.Cave.END;
-
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class CavePathFinder implements Cave.Visitor {
 
@@ -26,7 +24,7 @@ public class CavePathFinder implements Cave.Visitor {
     public void accept(Cave cave) {
         visited.add(cave);
 
-        if (isDone()) {
+        if (cave.isEnd()) {
             paths.add(visited);
             return;
         }
@@ -51,9 +49,5 @@ public class CavePathFinder implements Cave.Visitor {
 
     private void visitNext(List<Cave> branch, Cave next) {
         next.visit(branch(new ArrayList<>(branch)));
-    }
-
-    private boolean isDone() {
-        return END.equals(visited.get(visited.size() - 1).getName());
     }
 }

@@ -24,7 +24,7 @@ public class SmallDuplicateAllowedCavePathFinder extends CavePathFinder {
     }
 
     private boolean canVisitSmallCave(List<Cave> branch, Cave next) {
-        return !branch.contains(next) || next.isNotStartOrEnd() && !hasVisitedTwoSmallCaves(branch);
+        return !branch.contains(next) || !next.isStart() && !hasVisitedTwoSmallCaves(branch);
     }
 
     private boolean hasVisitedTwoSmallCaves(List<Cave> branch) {
