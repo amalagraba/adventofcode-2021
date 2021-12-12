@@ -50,7 +50,7 @@ public class CavePathFinder implements Cave.Visitor {
     }
 
     private void visitNext(List<Cave> branch, Cave next) {
-        next.visit(isDone() ? branch(new ArrayList<>(branch)) : this);
+        next.visit(branch(new ArrayList<>(branch)));
     }
 
     private boolean isDone() {
