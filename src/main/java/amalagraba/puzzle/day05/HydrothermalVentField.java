@@ -45,12 +45,6 @@ public class HydrothermalVentField {
     private Line parseLine(String rawLine) {
         String[] points = rawLine.split(" -> ");
 
-        return new Line(parsePoint(points[0]), parsePoint(points[1]));
-    }
-
-    public Point parsePoint(String point) {
-        String[] coordinates = point.split(",");
-
-        return new Point(Integer.parseInt(coordinates[0]), Integer.parseInt(coordinates[1]));
+        return new Line(new Point(points[0]), new Point(points[1]));
     }
 }
