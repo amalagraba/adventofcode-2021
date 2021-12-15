@@ -1,6 +1,6 @@
 package amalagraba.puzzle.day13;
 
-import amalagraba.common.Point;
+import amalagraba.common.grid.Point;
 
 import java.util.Set;
 import java.util.function.Function;

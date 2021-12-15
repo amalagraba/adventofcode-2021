@@ -1,5 +1,7 @@
 package amalagraba.puzzle.day12;
 
+import amalagraba.common.Visitor;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +21,7 @@ public class CaveMap {
         }
     }
 
-    public void visit(Cave.Visitor visitor) {
+    public void visit(Visitor<Cave> visitor) {
         if (caveMap.containsKey(START)) {
             caveMap.get(START).visit(visitor);
         }

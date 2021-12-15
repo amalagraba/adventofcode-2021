@@ -1,4 +1,4 @@
-package amalagraba.common;
+package amalagraba.common.grid;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

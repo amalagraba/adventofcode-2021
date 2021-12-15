@@ -1,7 +1,7 @@
 package amalagraba.puzzle.day09;
 
-import amalagraba.common.Grid;
-import amalagraba.common.IntPoint;
+import amalagraba.common.grid.Grid;
+import amalagraba.common.grid.IntPoint;
 import com.google.common.collect.Sets;
 
 import java.util.List;

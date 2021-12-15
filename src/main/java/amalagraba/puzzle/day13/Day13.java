@@ -1,7 +1,7 @@
 package amalagraba.puzzle.day13;
 
 import amalagraba.PuzzleRunner;
-import amalagraba.common.Point;
+import amalagraba.common.grid.Point;
 import amalagraba.puzzle.AbstractPuzzle;
 
 import java.util.Arrays;

@@ -1,5 +1,6 @@
 package amalagraba.puzzle.day12;
 
+import amalagraba.common.Visitor;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
-public class CavePathFinder implements Cave.Visitor {
+public class CavePathFinder implements Visitor<Cave> {
 
     @Getter
     protected final List<List<Cave>> paths;

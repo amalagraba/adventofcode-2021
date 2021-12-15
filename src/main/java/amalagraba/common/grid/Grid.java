@@ -1,4 +1,4 @@
-package amalagraba.common;
+package amalagraba.common.grid;
 
 import com.google.common.collect.AbstractIterator;
 
@@ -16,6 +16,10 @@ public class Grid<T extends Point> extends AbstractCollection<T> implements Coll
     private static final MatrixFactory MATRIX_FACTORY = new MatrixFactory();
 
     private final Point[][] grid;
+
+    public Grid(int rows, int columns) {
+        this.grid = new Point[columns][rows];
+    }
 
     public Grid(String[] lines, PointFactory<T> pointFactory) {
         this.grid = MATRIX_FACTORY.create(lines, pointFactory);
@@ -44,10 +48,26 @@ public class Grid<T extends Point> extends AbstractCollection<T> implements Coll
     }
 
     public int size() {
+        return rows() * columns();
+    }
+
+    public int rows() {
+        return grid.length;
+    }
+
+    public int columns() {
         if (grid.length == 0) {
             return 0;
         }
-        return grid.length * grid[0].length;
+        return grid[0].length;
+    }
+
+    public Optional<T> pointAt(int x, int y) {
+        return isOutOfTheGrid(x, y) ? Optional.empty() : Optional.of(cast(grid[y][x]));
+    }
+
+    public void set(T point) {
+        grid[point.getY()][point.getX()] = point;
     }
 
     @SafeVarargs
@@ -55,12 +75,8 @@ public class Grid<T extends Point> extends AbstractCollection<T> implements Coll
         return Arrays.stream(candidates).filter(Optional::isPresent).map(Optional::get).collect(Collectors.toList());
     }
 
-    private Optional<T> pointAt(int x, int y) {
-        return isOutOfTheGrid(x, y) ? Optional.empty() : Optional.of(cast(grid[x][y]));
-    }
-
     private boolean isOutOfTheGrid(int x, int y) {
-        return x < 0 || x >= grid.length || y < 0 || y >= grid[x].length;
+        return y < 0 || y >= grid.length || x < 0 || x >= grid[y].length;
     }
 
     @Override
@@ -70,15 +86,15 @@ public class Grid<T extends Point> extends AbstractCollection<T> implements Coll
 
             @Override
             protected T computeNext() {
-                if (y > 0 && y >= grid[x].length) {
-                    y = 0;
-                    x++;
+                if (x > 0 && x >= grid[y].length) {
+                    x = 0;
+                    y++;
                 }
-                if (x >= grid.length) {
+                if (y >= grid.length) {
                     endOfData();
                     return null;
                 }
-                return cast(grid[x][y++]);
+                return cast(grid[y][x++]);
             }
         };
     }

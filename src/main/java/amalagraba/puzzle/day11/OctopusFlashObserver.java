@@ -1,6 +1,6 @@
 package amalagraba.puzzle.day11;
 
-import amalagraba.common.Grid;
+import amalagraba.common.grid.Grid;
 
 import java.util.Collection;
 import java.util.HashSet;

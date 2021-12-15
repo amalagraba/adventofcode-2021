@@ -1,5 +1,6 @@
 package amalagraba.common;
 
+import amalagraba.common.grid.Point;
 import com.google.common.collect.AbstractIterator;
 import lombok.RequiredArgsConstructor;
 

@@ -1,7 +1,7 @@
 package amalagraba.puzzle.day05;
 
 import amalagraba.common.Line;
-import amalagraba.common.Point;
+import amalagraba.common.grid.Point;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.collections4.Bag;
 import org.apache.commons.collections4.bag.HashBag;

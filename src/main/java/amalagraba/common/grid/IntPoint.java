@@ -1,4 +1,4 @@
-package amalagraba.common;
+package amalagraba.common.grid;
 
 import lombok.Getter;
 import lombok.ToString;

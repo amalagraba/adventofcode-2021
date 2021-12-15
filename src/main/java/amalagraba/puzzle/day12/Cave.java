@@ -1,5 +1,6 @@
 package amalagraba.puzzle.day12;
 
+import amalagraba.common.Visitor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -41,12 +42,7 @@ public class Cave {
         return START.equals(name);
     }
 
-    public void visit(Visitor visitor) {
+    public void visit(Visitor<Cave> visitor) {
         visitor.accept(this);
-    }
-
-    @FunctionalInterface
-    public interface Visitor {
-        void accept(Cave cave);
     }
 }

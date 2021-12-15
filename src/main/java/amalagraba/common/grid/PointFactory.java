@@ -1,4 +1,4 @@
-package amalagraba.common;
+package amalagraba.common.grid;
 
 @FunctionalInterface
 public interface PointFactory<T extends Point> {

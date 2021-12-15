@@ -1,4 +1,4 @@
-package amalagraba.common;
+package amalagraba.common.grid;
 
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -11,17 +11,17 @@ public class MatrixFactory {
         }
         Point[][] grid = new Point[lines.length][lines[0].length()];
 
-        for (int x = 0; x < lines.length; x++) {
-            grid[x] = createRow(lines[x], pointFactory, x);
+        for (int y = 0; y < lines.length; y++) {
+            grid[y] = createRow(lines[y], pointFactory, y);
         }
         return grid;
     }
 
-    private <T extends Point> Point[] createRow(String line, PointFactory<T> factory, int x) {
+    private <T extends Point> Point[] createRow(String line, PointFactory<T> factory, int y) {
         Point[] row = new Point[line.length()];
 
-        for (int y = 0; y < line.length(); y++) {
-            row[y] = factory.create(x, y, line.charAt(y));
+        for (int x = 0; x < line.length(); x++) {
+            row[x] = factory.create(x, y, line.charAt(x));
         }
         return row;
     }
